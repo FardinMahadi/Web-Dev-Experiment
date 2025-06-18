@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS flex-grow Example</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        color: #333;
+      }
+
+      .container {
+        max-width: 800px;
+        width: 100%;
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        color: #2c3e50;
+      }
+
+      .subtitle {
+        font-size: 1.2rem;
+        color: #7f8c8d;
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+
+      .demo-section {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        margin-bottom: 30px;
+      }
+
+      h2 {
+        margin-bottom: 20px;
+        color: #3498db;
+        display: flex;
+        align-items: center;
+      }
+
+      h2::before {
+        content: "";
+        display: inline-block;
+        width: 10px;
+        height: 30px;
+        background: #3498db;
+        border-radius: 5px;
+        margin-right: 15px;
+      }
+
+      .flex-container {
+        display: flex;
+        gap: 10px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 25px;
+        border: 1px solid #e9ecef;
+      }
+
+      .item {
+        padding: 20px;
+        border-radius: 6px;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .item-1 {
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      }
+      .item-2 {
+        background: linear-gradient(135deg, #a8edea, #fed6e3);
+      }
+      .item-3 {
+        background: linear-gradient(135deg, #81fbb8, #28c76f);
+      }
+
+      /* Flex-basis examples */
+      .flex-basis-demo .item {
+        flex-grow: 0;
+        flex-shrink: 0;
+      }
+
+      .basis-auto {
+        flex-basis: auto;
+      }
+
+      .basis-0 {
+        flex-basis: 0;
+      }
+
+      .basis-100 {
+        flex-basis: 100px;
+      }
+
+      .basis-50-percent {
+        flex-basis: 50%;
+      }
+
+      .code {
+        background: #f8f9fa;
+        padding: 10px;
+        border-radius: 6px;
+        margin: 10px 0;
+        font-family: monospace;
+        color: #333;
+      }
+
+      .code-block {
+        background: #2c3e50;
+        color: #ecf0f1;
+        padding: 20px;
+        border-radius: 8px;
+        font-family: "Courier New", monospace;
+        white-space: pre-wrap;
+        line-height: 1.6;
+        overflow-x: auto;
+        margin-top: 20px;
+      }
+
+      .explanation {
+        background: #e3f2fd;
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 25px;
+        border-left: 4px solid #3498db;
+      }
+
+      .explanation h3 {
+        color: #3498db;
+        margin-bottom: 10px;
+      }
+
+      .explanation p {
+        margin-bottom: 15px;
+        line-height: 1.6;
+      }
+
+      .highlight {
+        background: #fff8e1;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-weight: bold;
+        color: #e74c3c;
+      }
+
+      @media (max-width: 600px) {
+        .flex-container {
+          flex-direction: column;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>CSS Flexbox Properties</h1>
+        <p class="subtitle">
+          Understanding flex-grow and flex-basis properties in CSS Flexbox
+          layout
+        </p>
+      </header>
+
+      <!-- Flex-basis Demo Section -->
+      <section class="demo-section">
+        <h2>flex-basis Examples</h2>
+        <p>
+          The flex-basis property sets the initial main size of a flex item
+          before remaining space is distributed.
+        </p>
+
+        <h3>flex-basis: auto (default)</h3>
+        <div class="flex-container flex-basis-demo">
+          <div class="item item-1 basis-auto">
+            <span>auto</span>
+            <small>Content width</small>
+          </div>
+          <div class="item item-2 basis-auto">
+            <span>auto</span>
+            <small>Content width</small>
+          </div>
+        </div>
+
+        <h3>flex-basis: 0</h3>
+        <div class="flex-container flex-basis-demo">
+          <div class="item item-1 basis-0">
+            <span>basis: 0</span>
+          </div>
+          <div class="item item-2 basis-0">
+            <span>basis: 0</span>
+          </div>
+        </div>
+
+        <h3>flex-basis: 100px</h3>
+        <div class="flex-container flex-basis-demo">
+          <div class="item item-1 basis-100">
+            <span>100px</span>
+          </div>
+          <div class="item item-2 basis-100">
+            <span>100px</span>
+          </div>
+        </div>
+
+        <h3>flex-basis: 50%</h3>
+        <div class="flex-container flex-basis-demo">
+          <div class="item item-1 basis-50-percent">
+            <span>50%</span>
+          </div>
+          <div class="item item-2 basis-50-percent">
+            <span>50%</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Original flex-grow content -->
+      <div class="demo-section">
+        <h2>Example 1: Equal Distribution</h2>
+        <div class="flex-container">
+          <div class="item item-1" style="flex-grow: 1">
+            <span>Item 1</span>
+            <div class="highlight">flex-grow: 1</div>
+          </div>
+          <div class="item item-2" style="flex-grow: 1">
+            <span>Item 2</span>
+            <div class="highlight">flex-grow: 1</div>
+          </div>
+          <div class="item item-3" style="flex-grow: 1">
+            <span>Item 3</span>
+            <div class="highlight">flex-grow: 1</div>
+          </div>
+        </div>
+
+        <div class="code-block">
+          .container { display: flex; } .item { flex-grow: 1; /* All items grow
+          equally */ }
+        </div>
+
+        <div class="explanation">
+          <h3>How This Works</h3>
+          <p>
+            When all items have the same
+            <span class="highlight">flex-grow</span> value (1 in this case), the
+            available space in the container is distributed equally among them.
+          </p>
+          <p>
+            Each item receives the same amount of extra space beyond its initial
+            content size.
+          </p>
+        </div>
+      </div>
+
+      <div class="demo-section">
+        <h2>Example 2: Unequal Distribution</h2>
+        <div class="flex-container">
+          <div class="item item-1" style="flex-grow: 1">
+            <span>Item 1</span>
+            <div class="highlight">flex-grow: 1</div>
+          </div>
+          <div class="item item-2" style="flex-grow: 2">
+            <span>Item 2</span>
+            <div class="highlight">flex-grow: 2</div>
+          </div>
+          <div class="item item-3" style="flex-grow: 3">
+            <span>Item 3</span>
+            <div class="highlight">flex-grow: 3</div>
+          </div>
+        </div>
+
+        <div class="code-block">
+          .container { display: flex; } .item:nth-child(1) { flex-grow: 1; } /*
+          1 part */ .item:nth-child(2) { flex-grow: 2; } /* 2 parts */
+          .item:nth-child(3) { flex-grow: 3; } /* 3 parts */
+        </div>
+
+        <div class="explanation">
+          <h3>How This Works</h3>
+          <p>
+            When items have different
+            <span class="highlight">flex-grow</span> values, the available space
+            is distributed proportionally.
+          </p>
+          <p>
+            In this case, the total growth factor is 1 + 2 + 3 = 6. Item 1 gets
+            1/6 of the space, Item 2 gets 2/6, and Item 3 gets 3/6.
+          </p>
+          <p>The items grow in a 1:2:3 ratio.</p>
+        </div>
+      </div>
+
+      <div class="demo-section">
+        <h2>Example 3: Mixed Growth</h2>
+        <div class="flex-container">
+          <div class="item item-1" style="flex-grow: 0; width: 120px">
+            <span>Fixed Size</span>
+            <div class="highlight">flex-grow: 0</div>
+            <div>width: 120px</div>
+          </div>
+          <div class="item item-2" style="flex-grow: 1">
+            <span>Growing Item</span>
+            <div class="highlight">flex-grow: 1</div>
+          </div>
+          <div class="item item-3" style="flex-grow: 2">
+            <span>Growing More</span>
+            <div class="highlight">flex-grow: 2</div>
+          </div>
+        </div>
+
+        <div class="code-block">
+          .container { display: flex; } .item:nth-child(1) { flex-grow: 0; /*
+          Won't grow */ width: 120px; /* Fixed width */ } .item:nth-child(2) {
+          flex-grow: 1; } /* Takes 1 part of remaining space */
+          .item:nth-child(3) { flex-grow: 2; } /* Takes 2 parts of remaining
+          space */
+        </div>
+
+        <div class="explanation">
+          <h3>How This Works</h3>
+          <p>
+            Item 1 has <span class="highlight">flex-grow: 0</span> and a fixed
+            width, so it won't grow.
+          </p>
+          <p>
+            The remaining space is distributed between Item 2 and Item 3 in a
+            1:2 ratio.
+          </p>
+          <p>
+            Item 2 gets 1/3 of the remaining space, and Item 3 gets 2/3 of the
+            remaining space.
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input:valid {
+            border-color: green;
+        }
+
+        input:invalid {
+            border-color: red;
+        }
+
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+        }
+
+        .skip-link:focus {
+            left: 10px;
+            /* Appears when focused */
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th scope="col">Product</th> <!-- Column header -->
+            <th scope="col">Price</th>
+        </tr>
+        <tr>
+            <th scope="row">Laptop</th> <!-- Row header -->
+            <td>$999</td>
+        </tr>
+    </table>
+
+    <div role="row">
+        <div role="columnheader" aria-sort="ascending">Name</div>
+        <div role="columnheader">Price</div>
+    </div>
+    <div role="row">
+        <div role="gridcell" tabindex="0">Laptop</div>
+        <div role="gridcell" tabindex="0">$999</div>
+    </div>
+
+    <input type="checkbox" id="newsletter" name="subscribe" checked>
+    <label for="newsletter">Subscribe to newsletter</label>
+
+    <label for="country">Country:</label>
+    <select id="country" name="country">
+        <option value="">-- Select --</option>
+        <option value="us">United States</option>
+        <option value="ca">Canada</option>
+    </select>
+
+
+    <select name="colors" multiple>
+        <option value="red">Red</option>
+        <option value="blue">Blue</option>
+    </select>
+
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" rows="4" cols="50" placeholder="Type here..."></textarea>
+
+    <input type="date" name="birthday">
+    <input type="datetime-local" name="meeting">
+    <input type="month" name="expiry">
+
+    <label for="volume">Volume:</label>
+    <input type="range" id="volume" name="volume" min="0" max="100" step="10" value="50">
+
+    <fieldset>
+        <legend>Shipping Address</legend>
+        <input type="text" placeholder="Street">
+        <input type="text" placeholder="City">
+    </fieldset>
+
+    <form action="/register" method="POST">
+        <fieldset>
+            <legend>Account Info</legend>
+            <label>
+                Email*:
+                <input type="email" name="email" required>
+            </label>
+            <label>
+                Password*:
+                <input type="password" name="password" minlength="8" required>
+            </label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Profile</legend>
+            <label>
+                Full Name:
+                <input type="text" name="name">
+            </label>
+            <label>
+                Subscribe:
+                <input type="checkbox" name="newsletter" checked>
+            </label>
+        </fieldset>
+
+        <button type="submit">Register</button>
+    </form>
+
+
+    <form action="/search" method="GET">
+        <input type="search" name="q" placeholder="Search...">
+        <button type="submit">🔍</button>
+    </form>
+
+    <input type="text" required minlength="3" pattern="[A-Za-z]+">
+
+    <blockquote cite="https://example.com">
+        <p>This is a quoted text.</p>
+    </blockquote>
+
+    <pre>
+        <code>const greet = () => console.log("Hello!");</code>
+        <code>greet();</code>
+        <code>console.log("Hello!");</code>
+    </pre>
+
+    <!-- Custom progress bar -->
+    <div role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+        75%
+    </div>
+
+    <!-- Skip link (hidden until focused) -->
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <!-- Custom button -->
+    <div tabindex="0" role="button">Click Me</div>
+
+    <script type="application/ld+json">
+        console.log({ 
+            "@context": "<https://schema.org>",
+            "@type": "Recipe",
+            "name": "Chocolate Cake",
+            "author": "Jane Doe",
+            "cookTime": "PT1H"
+          });
+    </script>
+</body>
+
+</html>
