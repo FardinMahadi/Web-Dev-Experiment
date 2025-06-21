@@ -18,5 +18,4 @@ console.log(2 ** 4);
 console.log(0.1 + 0.2 === 0.3);
 
 const name = "fardin";
-// name = { name: "Hasan" };
 console.log(name);
