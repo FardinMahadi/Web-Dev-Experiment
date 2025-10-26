@@ -1,0 +1,259 @@
+openapi: 3.1.0
+info:
+  title: Node API with Swagger
+  version: 1.0.0
+  description: A simple Express API with Swagger documentation
+
+servers:
+  - url: http://localhost:5000
+
+paths:
+  /api/hello:
+    get:
+      summary: Returns a hello message
+      description: Simple test endpoint
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Hello, Fardin! API is running 🚀
+
+  /api/fun:
+    get:
+      summary: Returns a fun message
+      responses:
+        200:
+          description: Fun endpoint
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Swagger API is funn
+
+  /api/items:
+    get:
+      summary: Get all items
+      responses:
+        200:
+          description: A list of items
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    name:
+                      type: string
+                      example: Sample Item
+                    description:
+                      type: string
+                      example: This is a sample item.
+    post:
+      summary: Create a new item
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - description
+              properties:
+                name:
+                  type: string
+                  example: New Item
+                description:
+                  type: string
+                  example: This is a new item.
+      responses:
+        201:
+          description: Item created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 3
+                  name:
+                    type: string
+                    example: New Item
+                  description:
+                    type: string
+                    example: This is a new item.
+
+  /api/items/{id}:
+    get:
+      summary: Get an item by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        200:
+          description: Item found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  name:
+                    type: string
+                    example: Sample Item
+                  description:
+                    type: string
+                    example: This is a sample item.
+        404:
+          description: Item not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Item not found
+
+    put:
+      summary: Update an item by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Updated Item
+                description:
+                  type: string
+                  example: Updated description
+      responses:
+        200:
+          description: Item updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  name:
+                    type: string
+                    example: Updated Item
+                  description:
+                    type: string
+                    example: Updated description
+        404:
+          description: Item not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Item not found
+
+    patch:
+      summary: "Partially update an item by ID"
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: "Updated Item Name"
+                description:
+                  type: string
+                  example: "Updated item description"
+      responses:
+        200:
+          description: "Item partially updated"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  name:
+                    type: string
+                    example: "Updated Item Name"
+                  description:
+                    type: string
+                    example: "Updated item description"
+        404:
+          description: "Item not found"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Item not found"
+
+    delete:
+      summary: Delete an item by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        204:
+          description: Item deleted successfully
+        404:
+          description: Item not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Item not found
